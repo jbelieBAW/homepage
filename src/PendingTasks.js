@@ -91,7 +91,7 @@ class PendingTasks extends Component {
     var eventsArray = [];
     var currentCulture = '';
     var currentDefaultMessages = {};
-    if ($('#4fc81828-2dd7-683c-153b-760f79d3f694_67e9243d-d6fd-fbb4-991c-f23e3eff15de .input-control span').html()=='FR'){
+     if ($('[name="com.dcr.datalabel.lang"]').html()=='FR'){
     //if (/^fr\b/.test(navigator.language)) {
       currentCulture = 'fr';
       currentDefaultMessages = defaultMessages_fr;
