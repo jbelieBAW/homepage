@@ -1,0 +1,107 @@
+.Tasks {
+  text-align: center;
+}
+  
+.Tasks-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+  
+.Tasks-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+  
+.Tasks-title {
+  font-size: 1.5em;
+}
+  
+.Tasks-intro {
+  font-size: large;
+}
+  
+@keyframes Tasks-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rbc-row-content {
+  z-index: 0 !important;
+}
+
+.rbc-calendar, .rbc-toolbar button {
+  font-family: Segoe UI Light, Gulim, Lucida Sans Unicode, Arial;
+}
+
+.rbc-event-content div,
+.rbc-agenda-event-cell div,
+.rbc-agenda-time-cell span {
+  color: white !important;
+}
+
+.rbc-event-content div .eventTitle,
+.rbc-agenda-event-cell div .eventTitle{
+  color: white !important;
+  font-weight: bold !important;
+}
+
+
+
+#popover-trigger-click-root-close {
+  text-align: center;
+  z-index: 10000;
+}
+
+#popover-trigger-click-root-close .popover-header{
+  padding: 10px;
+}
+
+.popover-body button{
+  font-weight: bold;
+  border: 0px;
+  color: #fff;
+  background-color: #ad2d2d;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 30px;
+  height: 32px;
+  font-size: 9pt;
+}
+
+.rbc-calendar .rbc-toolbar .rbc-btn-group:last-of-type,
+.rbc-calendar .rbc-agenda-view > .rbc-agenda-table,
+.rbc-calendar .rbc-agenda-view > .rbc-agenda-table .rbc-header:nth-of-type(2),
+.rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-time-cell {
+/*.rbc-calendar .rbc-toolbar .rbc-toolbar-label {*/
+  display: none !important;
+}
+
+.rbc-calendar .rbc-agenda-view .rbc-agenda-empty{
+  text-align: center !important;
+  padding-top: 50%;
+  font-family: "Segoe UI";
+  font-size: 14pt;
+}
+
+.rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-date-cell {
+  background-color: #fff !important;
+  color: #333;
+  text-align: center !important;
+  font-family: "Segoe UI";
+  font-size: 10pt;
+}
+
+.rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-table {
+  border: 0 !important;
+}
+
+.rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-table tbody [rowspan],
+.rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-table tbody [rowspan] ~ td {
+  border-top: 20px solid #fff !important;
+}
+
+.rbc-agenda-view table.rbc-agenda-table tbody > tr > td {
+  vertical-align: middle !important;
+}
