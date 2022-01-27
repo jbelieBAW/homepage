@@ -142,13 +142,33 @@ class PendingTasks extends Component {
           //TASK NAME FR
           case 8:
             if (currentCulture=='fr') {
-              my_self.event.title=$(this).data("options").value +" / "+ my_self.event.site; 
+				var pyramidLevel = '';
+				if (my_self.event.site != '') {
+					pyramidLevel = my_self.event.site;
+				} else if (my_self.event.entity != '') {
+					pyramidLevel = my_self.event.entity;
+				} else if (my_self.event.bu != '') {
+					pyramidLevel = my_self.event.bu	;
+				} else if (my_self.event.country != '') {
+					pyramidLevel = my_self.event.country;
+				}
+              my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
             }
             break;
           //TASK NAME EN
           case 9:
             if (currentCulture=='en') {
-              my_self.event.title=$(this).data("options").value +" / "+ my_self.event.site;
+              var pyramidLevel = '';
+				if (my_self.event.site != '') {
+					pyramidLevel = my_self.event.site;
+				} else if (my_self.event.entity != '') {
+					pyramidLevel = my_self.event.entity;
+				} else if (my_self.event.bu != '') {
+					pyramidLevel = my_self.event.bu	;
+				} else if (my_self.event.country != '') {
+					pyramidLevel = my_self.event.country;
+				}
+              my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
             }
             break;  
           //TASK TYPE INSTANCE
