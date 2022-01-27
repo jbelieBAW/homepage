@@ -143,13 +143,13 @@ class Tasks extends Component {
           case 8:
             if (currentCulture=='fr') {
 				var pyramidLevel = '';
-				if (my_self.event.site != '') {
+				if (my_self.event.site) {
 					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity != '') {
+				} else if (my_self.event.entity) {
 					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu != '') {
+				} else if (my_self.event.bu) {
 					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country != '') {
+				} else if (my_self.event.country) {
 					pyramidLevel = my_self.event.country;
 				}
               my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
@@ -159,18 +159,18 @@ class Tasks extends Component {
           case 9:
             if (currentCulture=='en') {
 				var pyramidLevel = '';
-				if (my_self.event.site != '') {
+				if (my_self.event.site) {
 					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity != '') {
+				} else if (my_self.event.entity) {
 					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu != '') {
+				} else if (my_self.event.bu) {
 					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country != '') {
+				} else if (my_self.event.country) {
 					pyramidLevel = my_self.event.country;
 				}
               my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
             }
-            break;  
+            break;
           //TASK TYPE INSTANCE
           case 10:
             break;
@@ -184,7 +184,16 @@ class Tasks extends Component {
           default:
             console.log("Unbound value");    
         }
-        my_self.event.desc= my_self.event.country +" / " + my_self.event.bu + " / " + my_self.event.entity + " / " + my_self.event.site;
+         my_self.event.desc= my_self.event.country ;
+		if ( my_self.event.bu ) {
+			my_self.event.desc+=" / " + my_self.event.bu;
+			if ( my_self.event.entity ) {
+				my_self.event.desc+=" / " + my_self.event.entity;
+				if ( my_self.event.site ) {
+					my_self.event.desc+=" / " + my_self.event.site;
+				}				
+			}
+		}
         if(my_self.event.safe != ""){
           my_self.event.desc = my_self.event.desc + " / " + my_self.event.safe;
         }
