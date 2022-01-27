@@ -141,15 +141,16 @@ class PendingTasks extends Component {
             break;
           //TASK NAME FR
           case 8:
+			console.log('site', my_self.event.site);
             if (currentCulture=='fr') {
 				var pyramidLevel = '';
-				if (my_self.event.site != '') {
+				if (my_self.event.site) {
 					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity != '') {
+				} else if (my_self.event.entity) {
 					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu != '') {
+				} else if (my_self.event.bu) {
 					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country != '') {
+				} else if (my_self.event.country) {
 					pyramidLevel = my_self.event.country;
 				}
               my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
@@ -158,14 +159,14 @@ class PendingTasks extends Component {
           //TASK NAME EN
           case 9:
             if (currentCulture=='en') {
-              var pyramidLevel = '';
-				if (my_self.event.site != '') {
+				var pyramidLevel = '';
+				if (my_self.event.site) {
 					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity != '') {
+				} else if (my_self.event.entity) {
 					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu != '') {
+				} else if (my_self.event.bu) {
 					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country != '') {
+				} else if (my_self.event.country) {
 					pyramidLevel = my_self.event.country;
 				}
               my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
