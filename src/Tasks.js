@@ -198,7 +198,7 @@ class Tasks extends Component {
           length={7}
           culture={this.state.defaultCulture}
 		  formats={{
-			  dayFormat
+			  formats
 			}}
           style={{ height: "90vh" }}
           //resources={resourceMap}
