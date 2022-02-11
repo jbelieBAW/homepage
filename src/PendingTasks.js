@@ -105,7 +105,7 @@ class PendingTasks extends Component {
       var my_self = this;
       $this.children("td").each(function( idx ) {
         my_self.event.allDay=true;
-switch(idx){
+       switch(idx){
           //ID
           case 0:
             my_self.event.id=$(this).data("options").value;
@@ -140,7 +140,17 @@ switch(idx){
             break;
           //TASK NAME FR
           case 8:
-              my_self.event.translate=$(this).data("options").value;
+				var pyramidLevel = '';
+				if (my_self.event.site) {
+					pyramidLevel = my_self.event.site;
+				} else if (my_self.event.entity) {
+					pyramidLevel = my_self.event.entity;
+				} else if (my_self.event.bu) {
+					pyramidLevel = my_self.event.bu	;
+				} else if (my_self.event.country) {
+					pyramidLevel = my_self.event.country;
+				}
+              my_self.event.translate=$(this).data("options").value +" / "+ pyramidLevel; 
             break;  
           // TASK COLOR
           case 10:

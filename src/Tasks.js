@@ -13,7 +13,10 @@ import "./Tasks.css";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const dayFormat = (date, culture, localizer) => localizer.format(date, 'D MMMM YYYY', culture);
+const formats = {
+	
+	agendaDateFormat: (date, culture, localizer) => localizer.format(date, 'D MMMM YYYY', culture)
+};
 
 const localizer = momentLocalizer(moment) // or globalizeLocalizer
 
@@ -142,7 +145,17 @@ class Tasks extends Component {
             break;
           //TASK NAME FR
           case 8:
-              my_self.event.translate=$(this).data("options").value;
+				var pyramidLevel = '';
+				if (my_self.event.site) {
+					pyramidLevel = my_self.event.site;
+				} else if (my_self.event.entity) {
+					pyramidLevel = my_self.event.entity;
+				} else if (my_self.event.bu) {
+					pyramidLevel = my_self.event.bu	;
+				} else if (my_self.event.country) {
+					pyramidLevel = my_self.event.country;
+				}
+              my_self.event.translate=$(this).data("options").value +" / "+ pyramidLevel; 
             break;  
           // TASK COLOR
           case 10:
