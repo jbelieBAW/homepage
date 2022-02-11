@@ -13,9 +13,9 @@ import "./Tasks.css";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const formats = {
+const dateFormats = {
 	
-	agendaDateFormat: (date, culture, localizer) => localizer.format(date, 'D MMMM YYYY', culture)
+	agendaDateFormat: (date, culture, localizer) => localizer.format(date, 'DD dd', culture)
 };
 
 const localizer = momentLocalizer(moment) // or globalizeLocalizer
@@ -105,12 +105,14 @@ class Tasks extends Component {
     }
     
     $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid').each(function(){
+		console.log('test');
       var $this = $(this);
       this.event = new Object;
       var my_self = this;
       $this.children("td").each(function( idx ) {
+		  console.log('idx', idx);
         my_self.event.allDay=true;
-       switch(idx){
+              switch(idx){
           //ID
           case 0:
             my_self.event.id=$(this).data("options").value;
@@ -177,6 +179,7 @@ class Tasks extends Component {
         if(my_self.event.safe != ""){
           my_self.event.desc = my_self.event.desc + " / " + my_self.event.safe;
         }
+		console.log('event',  my_self.event);
       });
       eventsArray.push(this.event);
     });
@@ -197,9 +200,7 @@ class Tasks extends Component {
           //resizable
           length={7}
           culture={this.state.defaultCulture}
-		  formats={{
-			  formats
-			}}
+		  formats={dateFormats}
           style={{ height: "90vh" }}
           //resources={resourceMap}
           //resourceIdAccessor="resourceId"
