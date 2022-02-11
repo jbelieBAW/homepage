@@ -13,6 +13,8 @@ import "./Tasks.css";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const dayFormat = (date, culture, localizer) => localizer.format(date, 'D MMMM YYYY', culture);
+
 const localizer = momentLocalizer(moment) // or globalizeLocalizer
 
 const defaultMessages_fr={
@@ -92,7 +94,6 @@ class Tasks extends Component {
     var currentCulture = '';
     var currentDefaultMessages = {};
     if ($('[name="com.dcr.datalabel.lang"]').html()=='FR'){
-    //if (/^fr\b/.test(navigator.language)) {
       currentCulture = 'fr';
       currentDefaultMessages = defaultMessages_fr;
     }else{
@@ -106,7 +107,7 @@ class Tasks extends Component {
       var my_self = this;
       $this.children("td").each(function( idx ) {
         my_self.event.allDay=true;
-        switch(idx){
+       switch(idx){
           //ID
           case 0:
             my_self.event.id=$(this).data("options").value;
@@ -141,44 +142,10 @@ class Tasks extends Component {
             break;
           //TASK NAME FR
           case 8:
-            if (currentCulture=='fr') {
-				var pyramidLevel = '';
-				if (my_self.event.site) {
-					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity) {
-					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu) {
-					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country) {
-					pyramidLevel = my_self.event.country;
-				}
-              my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
-            }
-            break;
-          //TASK NAME EN
-          case 9:
-            if (currentCulture=='en') {
-				var pyramidLevel = '';
-				if (my_self.event.site) {
-					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity) {
-					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu) {
-					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country) {
-					pyramidLevel = my_self.event.country;
-				}
-              my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
-            }
-            break;
-          //TASK TYPE INSTANCE
-          case 10:
-            break;
-          //TASK TYPE ID
-          case 11:
-            break;
+              my_self.event.translate=$(this).data("options").value;
+            break;  
           // TASK COLOR
-          case 12:
+          case 10:
             my_self.event.color=$(this).data("options").value;
             break;
           default:
@@ -217,6 +184,9 @@ class Tasks extends Component {
           //resizable
           length={7}
           culture={this.state.defaultCulture}
+		  formats={{
+			  dayFormat
+			}}
           style={{ height: "90vh" }}
           //resources={resourceMap}
           //resourceIdAccessor="resourceId"

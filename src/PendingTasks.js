@@ -92,7 +92,6 @@ class PendingTasks extends Component {
     var currentCulture = '';
     var currentDefaultMessages = {};
      if ($('[name="com.dcr.datalabel.lang"]').html()=='FR'){
-    //if (/^fr\b/.test(navigator.language)) {
       currentCulture = 'fr';
       currentDefaultMessages = defaultMessages_fr;
     }else{
@@ -106,7 +105,7 @@ class PendingTasks extends Component {
       var my_self = this;
       $this.children("td").each(function( idx ) {
         my_self.event.allDay=true;
-        switch(idx){
+switch(idx){
           //ID
           case 0:
             my_self.event.id=$(this).data("options").value;
@@ -141,44 +140,10 @@ class PendingTasks extends Component {
             break;
           //TASK NAME FR
           case 8:
-            if (currentCulture=='fr') {
-				var pyramidLevel = '';
-				if (my_self.event.site) {
-					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity) {
-					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu) {
-					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country) {
-					pyramidLevel = my_self.event.country;
-				}
-              my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
-            }
-            break;
-          //TASK NAME EN
-          case 9:
-            if (currentCulture=='en') {
-				var pyramidLevel = '';
-				if (my_self.event.site) {
-					pyramidLevel = my_self.event.site;
-				} else if (my_self.event.entity) {
-					pyramidLevel = my_self.event.entity;
-				} else if (my_self.event.bu) {
-					pyramidLevel = my_self.event.bu	;
-				} else if (my_self.event.country) {
-					pyramidLevel = my_self.event.country;
-				}
-              my_self.event.title=$(this).data("options").value +" / "+ pyramidLevel; 
-            }
+              my_self.event.translate=$(this).data("options").value;
             break;  
-          //TASK TYPE INSTANCE
-          case 10:
-            break;
-          //TASK TYPE ID
-          case 11:
-            break;
           // TASK COLOR
-          case 12:
+          case 10:
             my_self.event.color=$(this).data("options").value;
             break;
           default:
