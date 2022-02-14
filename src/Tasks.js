@@ -155,7 +155,8 @@ class Tasks extends Component {
         });
 
         // Custom date format
-		$('div[name=react-control-root-tasks]').bind('DOMNodeInserted', function(event) {			  
+		$('div[name=react-control-root-tasks]').bind('DOMNodeInserted', function(event) {	
+				console.log('insert', event.target);
 				$('.rbc-agenda-date-cell', event.target).each((index, element) => {
 					if ($(element).html() != undefined) {
 						let date = $(element).html().split(' ');
