@@ -143,6 +143,8 @@ class Tasks extends Component {
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		
+		console.log('events', this.eventsArray);
+		
 		this.setState({
             defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
