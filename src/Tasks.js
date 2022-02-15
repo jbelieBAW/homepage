@@ -277,7 +277,7 @@ class Tasks extends Component {
 							my_self.event.color	 = $(this).data("options").value;
 							break;
 						//Localisation
-						case 5:
+						case 6:
 							my_self.event.desc	 = $(this).data("options").value;
 							break;
 						default:
