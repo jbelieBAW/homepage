@@ -62,13 +62,15 @@ function EventAgenda({event}) {
     let statusTaskIcon = '';
 
 	// TASK WITH STATUS (need user action) 
+	console.log('format', event);
     if (event.statusTask) {
         cssClass += 'dcc-event-clickable';
         if (event.statusTask == 'closed' || event.statusTask == 'validated') {
-            statusTaskIcon =  <i class="bi bi-check-circle-fill"></i>;
+            statusTaskIcon =  <i class="bi bi-check-circle-fill" style= {{ color: 'green' }}></i>;
         } else {
-            statusTaskIcon =  <i class="bi bi-exclamation-circle-fill"></i>;
+            statusTaskIcon =  <i class="bi bi-exclamation-circle-fill" style= {{ color: 'red' }}></i>;
         }
+		
 		
 		return (
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
@@ -78,7 +80,7 @@ function EventAgenda({event}) {
 			</div> 
 		)
     } else {
-	
+	console.log('koo');
 	// TASK WITHOUT STATUS 
 		return (
 			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color, color: '#FFF' }}  >
@@ -271,6 +273,8 @@ class Tasks extends Component {
 						//DATE
 						case 2:
 							my_self.event.date = $(this).data("options").value;
+							my_self.event.start = $(this).data("options").value;
+							my_self.event.end = $(this).data("options").value;
 							break;
 						//STATUS
 						case 3:
