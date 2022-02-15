@@ -255,11 +255,14 @@ class Tasks extends Component {
 						my_self.event.desc = my_self.event.desc + " / " + my_self.event.safe;
 					}
 				} else {
+					my_self.event.color = "#AA7788";
 					my_self.event.allDay = true;
 					switch (idx) {
 						//ID
 						case 0:
 							my_self.event.id = $(this).data("options").value;
+							my_self.event.title = $(this).data("options").value;
+							my_self.event.desc = $(this).data("options").value;
 							break;
 						//NUMBER
 						case 1:
