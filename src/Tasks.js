@@ -81,7 +81,7 @@ function EventAgenda({event}) {
 	
 	// TASK WITHOUT STATUS 
 		return (
-			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color }}  >
+			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color, color: '#FFF' }}  >
 				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
@@ -155,7 +155,7 @@ class Tasks extends Component {
         });
 
         // Custom date format
-		$('div[name=react-control-root-tasks]').bind('DOMNodeInserted', function(event) {	
+		$('*[name=react-control-root-tasks]').bind('DOMNodeInserted', function(event) {	
 				console.log('insert', event.target);
 				$('.rbc-agenda-date-cell', event.target).each((index, element) => {
 					if ($(element).html() != undefined) {

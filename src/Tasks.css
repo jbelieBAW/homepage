@@ -8,24 +8,27 @@
 .rbc-calendar .rbc-agenda-view > .rbc-agenda-table .rbc-header:nth-of-type(2),
 .rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-time-cell {
 /*.rbc-calendar .rbc-toolbar .rbc-toolbar-label {*/
-  display: none !important;
+	display: none !important;
 }
 
 
 .rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-date-cell {
-  color: #333;
-  text-align: center !important;
-  font-size: 10pt;
-  border-right: 1px solid #CCC;
-  padding: 8px 15px;
-  text-align: center;
-  vertical-align: top;
-  width: 60px;
-  white-space: break-spaces;
+	color: #333;
+	text-align: center !important;
+	font-size: 10pt;
+	border-right: 1px solid #CCC;
+	padding: 8px 15px;
+	text-align: center;
+	vertical-align: top;
+	width: 60px;
+}
+
+.rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-event-cell {
+	white-space: break-spaces;
 }
 
 .rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-table {
-  border: 0 !important;
+	border: 0 !important;
 }
 
 
