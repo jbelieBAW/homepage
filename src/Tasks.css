@@ -34,16 +34,17 @@
 
 .dcc-date-number{
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 30px !important;
 	letter-spacing: -4px;
 	line-height: 22px;
 	display: block;
-	font-family: arial, sans-serif;
+	font-family: arial, sans-serif !important;
 	margin-left: -5px;
 }
 .dcc-date-name{
-	font-weight:regular;
-	font-size:20px;
+	font-weight:regular !important;
+	font-size:14px !important;
+	text-transform:uppercase;
 }
 
 .dcc-event-homepage {
@@ -61,7 +62,7 @@
 }
 
 .dcc-event-desc {
-	font-size: 12px;
+	font-size: 11px !important;
 }
 
 .dcc-event-statusTask {

@@ -113,7 +113,7 @@ class Tasks extends Component {
 		this.localizer = momentLocalizer(moment);
 		this.dateFormats = {
 			agendaDateFormat: function (date, culture, localizer) {
-				return localizer.format(date, 'DD dd', culture);
+				return localizer.format(date, 'DD ddd', culture);
 			}
 		};
     };
