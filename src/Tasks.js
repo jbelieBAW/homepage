@@ -71,7 +71,7 @@ function EventAgenda({event}) {
         }
 		
 		return (
-			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color, paddingRight: '28px' }}  >
+			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
 				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
@@ -81,7 +81,7 @@ function EventAgenda({event}) {
 	
 	// TASK WITHOUT STATUS 
 		return (
-			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD' }} >
+			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color }}  >
 				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
@@ -308,7 +308,6 @@ class Tasks extends Component {
 				  style={{ height: "90vh" }}
 				  eventPropGetter={event => ({
 					style: {
-					  color: 'white',
 					  border: '0px'
 					}
 				  })}

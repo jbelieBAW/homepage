@@ -1,3 +1,7 @@
+.rbc-agenda-table {
+	table-layout: fixed;
+	width: 100%;
+}
 
 .rbc-calendar .rbc-toolbar .rbc-btn-group:last-of-type,
 .rbc-calendar .rbc-agenda-view > .rbc-agenda-table,
@@ -16,6 +20,8 @@
   padding: 8px 15px;
   text-align: center;
   vertical-align: top;
+  width: 60px;
+  white-space: break-spaces;
 }
 
 .rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-table {
@@ -66,3 +72,4 @@
 .dcc-event-clickable {
 	cursor: pointer;
 }
+
