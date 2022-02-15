@@ -120,10 +120,8 @@ class Tasks extends Component {
 
 	navigateTo(event) {
 		
-		if(event.typeTask == 'dcr') {
-			window.location.href = "http://www.w3schools.com";
-		} else if (event.typeTask == 'sir') {
-			window.location.href = "http://www.w3schools.com";
+		if(event.URL) {
+			window.location.href = event.URL;
 		}
 	}
 
@@ -142,8 +140,8 @@ class Tasks extends Component {
         }
 
 		this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		this.readEvents('sir',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		this.readEvents('dcr',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		
 		this.setState({
             defaultCulture: this.currentCulture,
@@ -235,15 +233,6 @@ class Tasks extends Component {
 					case 10:
 						my_self.event.color = $(this).data("options").value;
 						break;
-						// STATUS
-					case 11:
-						console.log('value', $(this).data("options").value);
-						my_self.event.statusTask = $(this).data("options").value;
-						break;
-						// TYPE
-					case 12:
-						my_self.event.typeTask = $(this).data("options").value;
-						break;
 					default:
 						console.log("Unbound value");
 					}
@@ -262,6 +251,7 @@ class Tasks extends Component {
 						my_self.event.desc = my_self.event.desc + " / " + my_self.event.safe;
 					}
 				} else {
+					my_self.event.allDay = true;
 					switch (idx) {
 						//ID
 						case 0:
@@ -279,12 +269,16 @@ class Tasks extends Component {
 						case 3:
 							my_self.event.statusTask = $(this).data("options").value;
 							break;
+						//URL
+						case 4:
+							my_self.event.URL = $(this).data("options").value;
+							break;
 						default:
 						console.log("Unbound value");
 					}	
 				}
 			});
-			
+			console.log(this.event);
 			$this.eventsArray.push(this.event);       
 		});
     }
