@@ -123,7 +123,7 @@ class Tasks extends Component {
 	navigateTo(event) {
 		
 		if(event.URL) {
-			window.location.href = event.URL;
+			window.location.href = decodeURI(event.URL);
 		}
 	}
 
@@ -223,17 +223,7 @@ class Tasks extends Component {
 						break;
 						//TASK NAME FR
 					case 8:
-						var pyramidLevel = '';
-						if (my_self.event.site) {
-							pyramidLevel = my_self.event.site;
-						} else if (my_self.event.entity) {
-							pyramidLevel = my_self.event.entity;
-						} else if (my_self.event.bu) {
-							pyramidLevel = my_self.event.bu;
-						} else if (my_self.event.country) {
-							pyramidLevel = my_self.event.country;
-						}
-						my_self.event.translate = $(this).data("options").value + " / " + pyramidLevel;
+						my_self.event.title = $(this).data("options").value ;
 						break;
 						// TASK COLOR
 					case 10:
@@ -242,7 +232,7 @@ class Tasks extends Component {
 					default:
 						console.log("Unbound value");
 					}
-					my_self.event.title = 'test';
+					
 					my_self.event.desc = my_self.event.country;
 					if (my_self.event.bu) {
 						my_self.event.desc += " / " + my_self.event.bu;
@@ -257,14 +247,12 @@ class Tasks extends Component {
 						my_self.event.desc = my_self.event.desc + " / " + my_self.event.safe;
 					}
 				} else {
-					my_self.event.color = "#AA7788";
 					my_self.event.allDay = true;
 					switch (idx) {
 						//ID
 						case 0:
 							my_self.event.id = $(this).data("options").value;
 							my_self.event.title = $(this).data("options").value;
-							my_self.event.desc = $(this).data("options").value;
 							break;
 						//NUMBER
 						case 1:
@@ -283,6 +271,14 @@ class Tasks extends Component {
 						//URL
 						case 4:
 							my_self.event.URL = $(this).data("options").value;
+							break;
+						//Color
+						case 5:
+							my_self.event.color	 = $(this).data("options").value;
+							break;
+						//Localisation
+						case 5:
+							my_self.event.desc	 = $(this).data("options").value;
 							break;
 						default:
 						console.log("Unbound value");
@@ -308,14 +304,9 @@ class Tasks extends Component {
 				  localizer={this.localizer}
 				  messages={this.state.defaultMessages}
 				  length={30}
+				   style={{ height: "90vh" }}
 				  onSelectEvent={this.navigateTo}
 				  culture={this.state.defaultCulture}
-				  style={{ height: "90vh" }}
-				  eventPropGetter={event => ({
-					style: {
-					  border: '0px'
-					}
-				  })}
 				  components={{
 					event: EventAgenda
 				  }}
