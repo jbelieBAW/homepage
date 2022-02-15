@@ -174,9 +174,11 @@ class Tasks extends Component {
 	* @elementsArray : html element
 	*/
     readEvents(eventType, elementsArray) {
+		console.log('type', eventType);
+		console.log('elementsArray', elementsArray);
 		var $this = this;
 		elementsArray.each(function(){
-
+			console.log('this', $(this));
 			this.event = new Object;
 			var my_self = this;
 			$(this).children("td").each(function (idx) {
