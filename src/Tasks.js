@@ -11,6 +11,7 @@ import "./Tasks.css";
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const defaultMessages_fr = {
     date: 'Date',
@@ -311,7 +312,6 @@ class Tasks extends Component {
 				  }}
 				  eventPropGetter={event => ({
 					style: {
-					  backgroundColor: event.color,
 					  color: 'white',
 					  border: '0px'
 					}

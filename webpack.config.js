@@ -53,7 +53,7 @@ module.exports = {
     },
     output: {
       path: __dirname + '/public',
-      publicPath: '/',
+      publicPath: './',
       filename: 'bundle.js'
     },
     devServer: {
