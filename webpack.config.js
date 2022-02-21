@@ -4,6 +4,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
+
 module.exports = {
     entry: './src/index.js',
     optimization: {
@@ -24,18 +25,18 @@ module.exports = {
         {
             test: /\.(png|svg|jpg|jpeg|gif|ico|woff|woff2)$/,
             exclude: /node_modules/,
-            use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
-        },
-		
+            use: ['file-loader?name=[name].[ext]'], // ?name=[name].[ext] is only necessary to preserve the original file name
+			
+        }
       ]
     },
     plugins: [
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|fr/)/*,
-      new webpack.DefinePlugin({ 
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|fr/),
+      /*new webpack.DefinePlugin({ 
         'process.env': {
           'NODE_ENV': JSON.stringify('production')
         }
-      })*/,
+      }),*/
       new DuplicatePackageCheckerPlugin(),
       new webpack.optimize.AggressiveMergingPlugin(),
       new CompressionPlugin({   
@@ -54,7 +55,7 @@ module.exports = {
     },
     output: {
       path: __dirname + '/public',
-      publicPath: './',
+      publicPath:  'auto',
       filename: 'bundle.js'
     },
     devServer: {
