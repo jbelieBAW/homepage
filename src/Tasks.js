@@ -305,7 +305,7 @@ class Tasks extends Component {
 				  localizer={this.localizer}
 				  messages={this.state.defaultMessages}
 				  length={30}
-				  style={{ diplay: "block" }}
+				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
 				  culture={this.state.defaultCulture}
 				  components={{

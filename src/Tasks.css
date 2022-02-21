@@ -11,6 +11,10 @@
 	display: none !important;
 }
 
+.dcc-task .rbc-calendar {
+	display: block !important;
+}
+
 .rbc-calendar .rbc-agenda-view .rbc-agenda-content .rbc-agenda-date-cell {
 	color: #333;
 	text-align: center !important;
