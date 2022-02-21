@@ -66,9 +66,9 @@ function EventAgenda({event}) {
     if (event.statusTask) {
         cssClass += 'dcc-event-clickable';
         if (event.statusTask == 'closed' || event.statusTask == 'validated') {
-            statusTaskIcon =  <i class="bi bi-check-circle-fill" style= {{ color: 'green' }}></i>;
+            statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
         } else {
-            statusTaskIcon =  <i class="bi bi-exclamation-circle-fill" style= {{ color: 'red' }}></i>;
+            statusTaskIcon =  <i class="bi bi-exclamation-circle" style= {{ color: 'red' }}></i>;
         }
 		
 		
