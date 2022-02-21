@@ -228,7 +228,7 @@ class Tasks extends Component {
 						// TASK COLOR
 					case 10:
 						my_self.event.color = $(this).data("options").value;
-						my_self.event.bgcolor = my_self.event.color + '00';
+						my_self.event.bgcolor = my_self.event.color + '50';
 						break;
 					default:
 						console.log("Unbound value");
