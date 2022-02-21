@@ -65,7 +65,7 @@
 	font-size: 11px !important;
 }
 
-.dcc-event-statusTask {
+.dcc-event-statusTask, .theme-entry .SFC td .dcc-event-statusTask {
 	position: absolute;
 	top: 50%;
 	right: 10px;

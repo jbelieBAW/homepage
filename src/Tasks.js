@@ -76,14 +76,14 @@ function EventAgenda({event}) {
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
 				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
-				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
+				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
 			</div> 
 		)
     } else {
 	console.log('koo');
 	// TASK WITHOUT STATUS 
 		return (
-			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color, color: '#FFF' }}  >
+			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color }}  >
 				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
@@ -224,6 +224,8 @@ class Tasks extends Component {
 						//TASK NAME FR
 					case 8:
 						my_self.event.title = $(this).data("options").value ;
+						console.log('title', $(this).data("options").value);
+						console.log('title', $(this).data("options"));
 						break;
 						// TASK COLOR
 					case 10:
@@ -252,13 +254,13 @@ class Tasks extends Component {
 						//ID
 						case 0:
 							my_self.event.id = $(this).data("options").value;
-							my_self.event.title = $(this).data("options").value;
 							break;
 						//NUMBER
 						case 1:
+							my_self.event.title = $(this).data("options").value;
 							my_self.event.number = $(this).data("options").value;
-							break;			
-						//DATE
+							break;
+						// DATE
 						case 2:
 							my_self.event.date = $(this).data("options").value;
 							my_self.event.start = $(this).data("options").value;
@@ -312,7 +314,6 @@ class Tasks extends Component {
 				  }}
 				  eventPropGetter={event => ({
 					style: {
-					  color: 'white',
 					  border: '0px'
 					}
 				  })}
