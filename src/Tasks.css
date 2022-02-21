@@ -35,7 +35,7 @@
 .dcc-date-number{
 	font-weight: bold;
 	font-size: 26px !important;
-	letter-spacing: -3px;
+	letter-spacing: -2px;
 	line-height: 22px;
 	display: block;
 	font-family: arial, sans-serif !important;
@@ -68,9 +68,9 @@
 .dcc-event-statusTask, .theme-entry .SFC td .dcc-event-statusTask {
 	position: absolute;
 	top: 50%;
-	right: 10px;
-	margin-top:-16px;
-	font-size:20px;
+	right: 12px;
+	margin-top: -14px;
+	font-size: 18px;
 }
 
 .dcc-event-clickable {

@@ -223,7 +223,8 @@ class Tasks extends Component {
 						break;
 						//TASK NAME FR
 					case 8:
-						my_self.event.title = $(this).data("options").value ;
+						my_self.event.title = $(this).text() ;
+						console.log('title', $(this)) ;
 						console.log('title', $(this).data("options").value);
 						console.log('title', $(this).data("options"));
 						break;
