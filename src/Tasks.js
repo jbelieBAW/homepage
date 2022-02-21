@@ -83,7 +83,7 @@ function EventAgenda({event}) {
 	console.log('koo');
 	// TASK WITHOUT STATUS 
 		return (
-			<div class = {cssClass} style = {{ backgroundColor: event.color, borderLeft: '8px solid ' + event.color }}  >
+			<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
 				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
@@ -224,13 +224,11 @@ class Tasks extends Component {
 						//TASK NAME FR
 					case 8:
 						my_self.event.title = $(this).text() ;
-						console.log('title', $(this)) ;
-						console.log('title', $(this).data("options").value);
-						console.log('title', $(this).data("options"));
 						break;
 						// TASK COLOR
 					case 10:
 						my_self.event.color = $(this).data("options").value;
+						my_self.event.bgcolor = my_self.event.color + '00';
 						break;
 					default:
 						console.log("Unbound value");
