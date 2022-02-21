@@ -296,7 +296,7 @@ class Tasks extends Component {
 	*/
     render() {
         return (
-            <div className="PendingTasks">
+            <div className="dcc-tasks">
 				<Calendar
 				  defaultDate={moment().toDate()}
 				  defaultView="agenda"
@@ -305,7 +305,7 @@ class Tasks extends Component {
 				  localizer={this.localizer}
 				  messages={this.state.defaultMessages}
 				  length={30}
-				   style={{ height: "90vh" }}
+				  style={{ diplay: "block" }}
 				  onSelectEvent={this.navigateTo}
 				  culture={this.state.defaultCulture}
 				  components={{
