@@ -178,7 +178,7 @@ class Tasks extends Component {
 	
 	formatDateHtml(htmlElement) {
 		$(htmlElement).bind('DOMNodeInserted', function(event) {
-			$('.rbc-agenda-date-cell', event.target).each((index, element) => {
+			$('.rbc-agenda-date-cell', htmlElement).each((index, element) => {
 				if ($(element).html() != undefined && $(element).html().indexOf("dcc-date-number") == -1) {
 					let date = $(element).html().split(' ');
 					$(element).html("<span class='dcc-date-number'>" + date[0] + "</span><span class='dcc-date-name'>" + date[1] + "</span>");
