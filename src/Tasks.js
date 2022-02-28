@@ -13,6 +13,9 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+/**
+* TRANSLATIONS
+*/
 const defaultMessages_fr = {
     date: 'Date',
     time: 'Heure',
@@ -57,12 +60,14 @@ const defaultMessages_en = {
     }
 };
 
+/**
+* HTML Renderer
+*/
 function EventAgenda({event}) {
     let cssClass = 'dcc-event-homepage ';
     let statusTaskIcon = '';
 
-	// TASK WITH STATUS (need user action) 
-	console.log('format', event);
+	// Task with status (need user action) 
     if (event.statusTask) {
         cssClass += 'dcc-event-clickable';
         if (event.statusTask == 'closed' || event.statusTask == 'validated') {
@@ -80,8 +85,7 @@ function EventAgenda({event}) {
 			</div> 
 		)
     } else {
-	console.log('koo');
-	// TASK WITHOUT STATUS 
+		// Task without status 
 		return (
 			<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
 				<span class='dcc-event-title'>{event.title}</span>
@@ -94,15 +98,12 @@ function EventAgenda({event}) {
     
 }
 
-function navigateTo(elementss) {
-	console.log('element', elementss);
-	//window.location.href = "http://www.w3schools.com";
-}
 
 class Tasks extends Component {
 
     constructor(props) {
         super(props);
+		
         this.state = {
             defaultCulture: '',
             defaultMessages: {},
@@ -118,20 +119,23 @@ class Tasks extends Component {
 				return localizer.format(date, 'DD ddd', culture);
 			}
 		};
+		
+
+		
     };
 
+	/**
+	* Navigate to DCR & SIR
+	*/
 	navigateTo(event) {
-		
 		if(event.URL) {
 			window.location.href = decodeURI(event.URL);
 		}
 	}
 
-
-	componentDidUpdate(prevProps) {
-	console.log('componentDidUpdate', $('.rbc-agenda-date-cell'));
-	}
-
+	/**
+	* Initialization method
+	*/
     componentDidMount() {
         if ($('[name="com.dcr.datalabel.lang"]').html() == 'FR') {
 			this.currentCulture = 'fr';
@@ -141,11 +145,12 @@ class Tasks extends Component {
             this.currentDefaultMessages = defaultMessages_en;
         }
 
-		this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		if (this.props.status === 'all') {
+			this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		}
+		
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		
-		console.log('events', this.eventsArray);
 		
 		this.setState({
             defaultCulture: this.currentCulture,
@@ -156,33 +161,34 @@ class Tasks extends Component {
             }
         });
 
-        // Custom date format
-		$('*[name=react-control-root-tasks]').bind('DOMNodeInserted', function(event) {	
-				console.log('insert', event.target);
-				$('.rbc-agenda-date-cell', event.target).each((index, element) => {
-					if ($(element).html() != undefined) {
-						let date = $(element).html().split(' ');
-						$(element).html("<span class='dcc-date-number'>" + date[0] + "</span><span class='dcc-date-name'>" + date[1] + "</span>");
-					}
-				});
-
-		});
+		this.addFormatDateHtml();
+       
     }
 
 	
-
+	/**
+	* Format date html
+	*/
+	addFormatDateHtml() {
+		// Custom date format
+		$('*[name=react-control-root-tasks]').bind('DOMNodeInserted', function(event) {	
+			$('.rbc-agenda-date-cell', event.target).each((index, element) => {
+				if ($(element).html() != undefined) {
+					let date = $(element).html().split(' ');
+					$(element).html("<span class='dcc-date-number'>" + date[0] + "</span><span class='dcc-date-name'>" + date[1] + "</span>");
+				}
+			});
+		});
+	}
 
 	/**
-	* Read events from HTML generate with K2
+	* Read events from HTML from k2 and add events to react-calendar
 	* @eventType : tasks, dcr, sir
 	* @elementsArray : html element
 	*/
     readEvents(eventType, elementsArray) {
-		console.log('type', eventType);
-		console.log('elementsArray', elementsArray);
 		var $this = this;
-		elementsArray.each(function(){
-			console.log('this', $(this));
+		elementsArray.each(function() {
 			this.event = new Object;
 			var my_self = this;
 			$(this).children("td").each(function (idx) {
@@ -228,7 +234,7 @@ class Tasks extends Component {
 						// TASK COLOR
 					case 10:
 						my_self.event.color = $(this).data("options").value;
-						my_self.event.bgcolor = my_self.event.color + '50';
+						my_self.event.bgcolor = my_self.event.color + '25';
 						break;
 					default:
 						console.log("Unbound value");
@@ -286,19 +292,31 @@ class Tasks extends Component {
 					}	
 				}
 			});
-			console.log(this.event);
-			$this.eventsArray.push(this.event);       
+			
+			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
+				$this.eventsArray.push(this.event);       
+			}
 		});
     }
 
 	/**
-	* Render
+	* Render react
 	*/
     render() {
+		
+		if (this.props.status == 'pending') {
+			this.dateStartCalendar = new Date();
+			this.dateStartCalendar.setMonth(this.dateStartCalendar.getMonth() - 1);
+		
+		} else {
+			this.dateStartCalendar = moment().toDate();
+		}
+		
+		console.log(this.dateStartCalendar);
         return (
             <div className="dcc-tasks">
 				<Calendar
-				  defaultDate={moment().toDate()}
+				  defaultDate={this.dateStartCalendar}
 				  defaultView="agenda"
 				  formats={this.dateFormats}
 				  events={this.state.events}
