@@ -161,25 +161,24 @@ class Tasks extends Component {
             }
         });
 
-		this.addFormatDateHtml();
+		
+		this.addFormatDateHtml($('*[name=react-control-root-tasks]'));
+		this.addFormatDateHtml($('*[name=react-control-root-pendingtasks]'));
        
     }
 
 	
 	/**
 	* Format date html
-	*/
-	addFormatDateHtml() {
-		console.log('add format', $('*[name=react-control-root-tasks], *[name=react-control-root-pendingtasks]'));
-		// Custom date format
-		this.formatDateHtml($('*[name=react-control-root-tasks]'));
-		this.formatDateHtml($('*[name=react-control-root-pendingtasks]'));
-	}
-	
-	formatDateHtml(htmlElement) {
+	*/	
+	addFormatDateHtml(htmlElement) {
+		console.log('html', htmlElement);
 		$(htmlElement).bind('DOMNodeInserted', function(event) {
+			console.log('inserted', event);
+			console.log('cell', $('.rbc-agenda-date-cell', htmlElement));
 			$('.rbc-agenda-date-cell', htmlElement).each((index, element) => {
 				if ($(element).html() != undefined && $(element).html().indexOf("dcc-date-number") == -1) {
+					console.log('update', $(element).html());
 					let date = $(element).html().split(' ');
 					$(element).html("<span class='dcc-date-number'>" + date[0] + "</span><span class='dcc-date-name'>" + date[1] + "</span>");
 				}
@@ -316,9 +315,9 @@ class Tasks extends Component {
 		
 		} else {
 			this.dateStartCalendar = moment().toDate();
+			
 		}
 		
-		console.log(this.dateStartCalendar);
         return (
             <div className="dcc-tasks">
 				<Calendar
