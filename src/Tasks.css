@@ -58,7 +58,7 @@
 	color:#111;
 }
 
-.dcc-event-title {
+.theme-entry span.dcc-event-title {
 	font-weight: bold;
 	display: block;
 	line-height: 12px;
