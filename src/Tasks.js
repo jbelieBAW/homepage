@@ -172,13 +172,9 @@ class Tasks extends Component {
 	* Format date html
 	*/	
 	addFormatDateHtml(htmlElement) {
-		console.log('html', htmlElement);
 		$(htmlElement).bind('DOMNodeInserted', function(event) {
-			console.log('inserted', event);
-			console.log('cell', $('.rbc-agenda-date-cell', htmlElement));
 			$('.rbc-agenda-date-cell', htmlElement).each((index, element) => {
 				if ($(element).html() != undefined && $(element).html().indexOf("dcc-date-number") == -1) {
-					console.log('update', $(element).html());
 					let date = $(element).html().split(' ');
 					$(element).html("<span class='dcc-date-number'>" + date[0] + "</span><span class='dcc-date-name'>" + date[1] + "</span>");
 				}
