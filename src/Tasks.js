@@ -300,6 +300,7 @@ class Tasks extends Component {
 		});
     }
 
+	
 	/**
 	* Render react
 	*/
@@ -307,11 +308,9 @@ class Tasks extends Component {
 		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
-			this.dateStartCalendar.setMonth(this.dateStartCalendar.getMonth() - 1);
-		
+			this.dateStartCalendar.setDate(this.dateStartCalendar.getDate() - 7);
 		} else {
 			this.dateStartCalendar = moment().toDate();
-			
 		}
 		
         return (
@@ -323,7 +322,7 @@ class Tasks extends Component {
 				  events={this.state.events}
 				  localizer={this.localizer}
 				  messages={this.state.defaultMessages}
-				  length={30}
+				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
 				  culture={this.state.defaultCulture}
