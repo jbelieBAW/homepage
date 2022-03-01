@@ -308,7 +308,7 @@ class Tasks extends Component {
 		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
-			this.dateStartCalendar.setDate(this.dateStartCalendar.getDate() - 7);
+			this.dateStartCalendar.setDate(this.dateStartCalendar.getDate() - 8);
 		} else {
 			this.dateStartCalendar = moment().toDate();
 		}
