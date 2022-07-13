@@ -305,7 +305,7 @@ class Tasks extends Component {
 	*/
     render() {
 		
-		const onRangeChange = console.log('Test onRangeChange()');
+		const onRangeChange = ({start: this.dateStartCalendar.setDate(this.dateStartCalendar.getDate() - 8), end: new Date()})=> {console.log('Test onRangeChange')};
 		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
@@ -334,7 +334,6 @@ class Tasks extends Component {
 				  eventPropGetter={event => ({
 					style: {
 					  border: '0px',
-					  height: '500px'
 					}
 				  })}
 				/>
