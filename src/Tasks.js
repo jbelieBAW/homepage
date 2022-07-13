@@ -305,6 +305,8 @@ class Tasks extends Component {
 	*/
     render() {
 		
+		const onRangeChange = console.log('Test onRangeChange()');
+		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
 			this.dateStartCalendar.setDate(this.dateStartCalendar.getDate() - 8);
@@ -324,14 +326,15 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onRangeChange={console.log('Test')}
+				  onRangeChange={onRangeChange}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
 				  }}
 				  eventPropGetter={event => ({
 					style: {
-					  border: '0px'
+					  border: '0px',
+					  height: '500px'
 					}
 				  })}
 				/>
