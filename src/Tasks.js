@@ -120,7 +120,6 @@ class Tasks extends Component {
 			}
 		};
 		
-
 		
     };
 
@@ -314,7 +313,7 @@ class Tasks extends Component {
 		}
 		
         return (
-            <div className="dcc-tasks">
+            <div className="dcc-tasks"> 
 				<Calendar
 				  defaultDate={this.dateStartCalendar}
 				  defaultView="agenda"
@@ -325,6 +324,7 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
+				  onRangeChange={console.log('Test')}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
