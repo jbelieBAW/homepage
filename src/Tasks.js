@@ -305,16 +305,15 @@ class Tasks extends Component {
 	*/
     render() {
 		
-		 const onRangeChange = useCallback((range) => {
-    window.alert(buildMessage(range))
-  }, [])
-		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
 			this.dateStartCalendar.setDate(this.dateStartCalendar.getDate() - 8);
 		} else {
 			this.dateStartCalendar = moment().toDate();
 		}
+		
+		
+		
 		
         return (
             <div className="dcc-tasks"> 
@@ -328,7 +327,7 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onRangeChange={onRangeChange}
+				  onNavigate={()=>console.log("Test onNavigate")}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
