@@ -316,7 +316,7 @@ class Tasks extends Component {
         return (
             <div className="dcc-tasks"> 
 				<Calendar
-				  defaultDate={this.dateStartCalendar}
+				/*  defaultDate={this.dateStartCalendar} */
 				  defaultView="agenda"
 				  formats={this.dateFormats}
 				  events={this.state.events}
