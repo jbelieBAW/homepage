@@ -316,7 +316,7 @@ class Tasks extends Component {
         return (
             <div className="dcc-tasks"> 
 				<Calendar
-				/*  defaultDate={this.dateStartCalendar} */
+				  defaultDate={this.dateStartCalendar} 
 				  defaultView="agenda"
 				  formats={this.dateFormats}
 				  events={this.state.events}
@@ -325,7 +325,8 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onNavigate={(this.dateStartCalendar) => console.log("Test" + this.dateStartCalendar), []}
+				  onNavigate={(event, view, action) => { 
+    console.log(event, view, action});
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
