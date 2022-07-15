@@ -305,7 +305,7 @@ class Tasks extends Component {
 	*/
     render() {
 		
-		const onNavigate = function()=> { console.log('Test onNavigate') ; };
+		const onNavigate = useCallback(()=> { console.log('Test onNavigate') ; });
 		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
