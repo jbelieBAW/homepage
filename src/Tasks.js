@@ -305,7 +305,9 @@ class Tasks extends Component {
 	*/
     render() {
 		
-		const onRangeChange = useCallback(()=> { console.log('Test onNavigate') ; });
+		 const onRangeChange = useCallback((range) => {
+    window.alert(buildMessage(range))
+  }, [])
 		
 		if (this.props.status == 'pending') {
 			this.dateStartCalendar = new Date();
