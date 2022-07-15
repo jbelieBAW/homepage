@@ -313,8 +313,6 @@ class Tasks extends Component {
 		}
 		
 		
-		const onNavigate = useCallback((this.dateStartCalendar) => console.log("Test" + this.dateStartCalendar), [setDate])
-		
         return (
             <div className="dcc-tasks"> 
 				<Calendar
@@ -327,7 +325,7 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onNavigate={onNavigate}
+				  onNavigate={(this.dateStartCalendar) => console.log("Test" + this.dateStartCalendar), []}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
