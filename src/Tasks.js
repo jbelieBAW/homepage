@@ -329,8 +329,8 @@ class Tasks extends Component {
 		let dateEnd = new Date(dateStartObject);
 		dateEnd.setDate(dateEnd.getDate() + 7);
 		$("*[name='com.dcr.DCRListView.date_end']").html(dateEnd.format('yyyy-MM-dd'));
-		
-
+		console.log('end', dateEnd);
+		console.log('buton', $("*[name='com.dcr.DCRListView.button.refresh']:eq(0)"));
 		$("*[name='com.dcr.DCRListView.button.refresh']:eq(0)").trigger('click');
 	}
 	
