@@ -313,6 +313,14 @@ class Tasks extends Component {
 			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
 				$this.eventsArray.push(this.event);       
 			}
+			
+		});
+		
+		$this.setState({
+			defaultCulture: currentCulture, 
+			defaultMessages: currentDefaultMessages, 
+			defaultDeleteButtonText: currentDeleteButtonText, 
+			events : eventsArray
 		});
     }
 
@@ -322,17 +330,12 @@ class Tasks extends Component {
 		
 		let dateStart = event['start'].format('yyyy-MM-dd');
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
-		console.log($("[name='com.dcr.DCRListView.date_end']"));
-		console.log($("*[name='com.dcr.DCRListView.date_end']"));
-		$("[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateStart);
 
-		
 		
 		let dateStartObject = new Date(event.start.format('yyyy-MM-dd'));
 		let dateEnd = new Date(dateStartObject);
 		dateEnd.setDate(dateEnd.getDate() + 7);
 		$("[name='com.dcr.DCRListView.date_end']").html(dateEnd.format('yyyy-MM-dd'));
-		$("[name='com.dcr.DCRListView.date_end']").SFCLabel('option', 'text', dateEnd.format('yyyy-MM-dd'));
 		document.getElementsByName("com.dcr.DCRListView.button.refresh")[0].click();
 	}
 	
