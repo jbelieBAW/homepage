@@ -323,6 +323,10 @@ class Tasks extends Component {
 	
 	changeDate(event) {
 		console.log('rrr', event);
+		let dateStart = event.start.getFullYear() + '/' + (event.start.getMonth()+1) + '/' + (event.start.getDay() + 1);
+		console.log('startdate', dateStart);
+		$("*[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateStart);
+		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
 	}
 	
 	/**
