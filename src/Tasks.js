@@ -324,10 +324,8 @@ class Tasks extends Component {
 	changeDate1(event) {
 		console.log('rrr', event);
 		let dateStart = event['start'].format('yyyy/MM/dd');
-		$("*[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateStart);
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
 		let dateEnd = event['end'].format('yyyy/MM/dd');
-		$("*[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateEnd);
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateEnd);
 		
 		$("*[name='com.dcr.DCRListView.button.refresh']").click();
