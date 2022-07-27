@@ -318,21 +318,21 @@ class Tasks extends Component {
 
 	
 	onRangeChange(event) {
+		console.log('onrangechagen', event);
 		
-		// start date
 		let dateStart = event['start'].format('yyyy-MM-dd');
-		document.getElementsByName("com.dcr.DCRListView.date_start")[0].html(dateStart);
-		document.getElementsByName("com.dcr.DCRListView.date_start")[0].SFCLabel('option', 'text', dateStart);
+		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
+		console.log($("[name='com.dcr.DCRListView.date_end']"));
+		console.log($("*[name='com.dcr.DCRListView.date_end']"));
+		$("[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateStart);
 
 		
-		// end date
+		
 		let dateStartObject = new Date(event.start.format('yyyy-MM-dd'));
 		let dateEnd = new Date(dateStartObject);
 		dateEnd.setDate(dateEnd.getDate() + 7);
-		document.getElementsByName("com.dcr.DCRListView.date_end")[0].html(dateEnd.format('yyyy-MM-dd'));
-		document.getElementsByName("com.dcr.DCRListView.date_end")[0].SFCLabel('option', 'text', dateEnd.format('yyyy-MM-dd'));
-		
-		// start k2 rules
+		$("[name='com.dcr.DCRListView.date_end']").html(dateEnd.format('yyyy-MM-dd'));
+		$("[name='com.dcr.DCRListView.date_end']").SFCLabel('option', 'text', dateEnd.format('yyyy-MM-dd'));
 		document.getElementsByName("com.dcr.DCRListView.button.refresh")[0].click();
 	}
 	
