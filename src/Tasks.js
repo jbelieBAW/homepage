@@ -132,6 +132,7 @@ class Tasks extends Component {
 		}
 	}
 
+	
 	/**
 	* Initialization method
 	*/
@@ -287,6 +288,22 @@ class Tasks extends Component {
 						case 6:
 							my_self.event.desc	 = $(this).data("options").value;
 							break;
+						//Localisation
+						case 6:
+							my_self.event.desc	 = $(this).data("options").value;
+							break;
+						//type
+						case 7:
+							my_self.event.type	 = $(this).data("options").value;
+							break;
+						//Localisation
+						case 8:
+							my_self.event.waiting	 = $(this).data("options").value;
+							break;
+						//Localisation
+						case 9:
+							my_self.event.total	 = $(this).data("options").value;
+							break;
 						default:
 						console.log("Unbound value");
 					}	
@@ -299,6 +316,14 @@ class Tasks extends Component {
 		});
     }
 
+	
+	changeDate(event) {
+		console.log('nav', event);
+	}
+	
+	changeDate(event) {
+		console.log('rrr', event);
+	}
 	
 	/**
 	* Render react
@@ -325,8 +350,8 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onNavigate={(event, view, action) => { 
-    console.log(event, view, action});
+				  onNavigate={this.changeDate}
+				  onRangeChange={this.changeDate}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
