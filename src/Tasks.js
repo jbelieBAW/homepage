@@ -322,8 +322,9 @@ class Tasks extends Component {
 		
 		let dateStart = event['start'].format('yyyy-MM-dd');
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
-		let dateEnd = Object.assign({}, event['start']);
-		dateEnd = dateEnd.increment(7).format('yyyy-MM-dd');
+		
+		let dateStartObject = new Date(event.start.format('yyyy-MM-dd'));
+		let dateEnd = dateStartObject.setDate(dateStartObject.getDate() + 7);
 		$("*[name='com.dcr.DCRListView.date_end']").html(dateEnd);
 		
 		console.log('start', dateStart);
