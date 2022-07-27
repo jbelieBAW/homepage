@@ -317,16 +317,13 @@ class Tasks extends Component {
     }
 
 	
-	changeDate0(event) {
-		console.log('nav', event);
-	}
-	
-	changeDate1(event) {
-		console.log('rrr', event);
-		let dateStart = event['start'].format('yyyy/MM/dd');
+	onRangeChange(event) {
+		console.log('onrangechagen', event);
+		
+		let dateStart = event['start'].format('yyyy-MM-dd');
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
-		let dateEnd = event['end'].format('yyyy/MM/dd');
-		$("*[name='com.dcr.DCRListView.date_start']").html(dateEnd);
+		let dateEnd = event['end'].format('yyyy-MM-dd');
+		$("*[name='com.dcr.DCRListView.date_end']").html(dateEnd);
 		
 		$("*[name='com.dcr.DCRListView.button.refresh']").click();
 	}
@@ -356,8 +353,7 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onNavigate={this.changeDate0}
-				  onRangeChange={this.changeDate1}
+				  onRangeChange={this.onRangeChange}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
