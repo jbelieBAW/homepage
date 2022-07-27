@@ -317,10 +317,7 @@ class Tasks extends Component {
 		});
 		
 		$this.setState({
-			defaultCulture: currentCulture, 
-			defaultMessages: currentDefaultMessages, 
-			defaultDeleteButtonText: currentDeleteButtonText, 
-			events : eventsArray
+			events : $this.eventsArray
 		});
     }
 
