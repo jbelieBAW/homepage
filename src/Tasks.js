@@ -317,16 +317,16 @@ class Tasks extends Component {
     }
 
 	
-	changeDate(event) {
+	changeDate0(event) {
 		console.log('nav', event);
 	}
 	
-	changeDate(event) {
+	changeDate1(event) {
 		console.log('rrr', event);
-		let dateStart = event.start.format('yyyy/MM/dd');
+		let dateStart = event['start'].format('yyyy/MM/dd');
 		$("*[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateStart);
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
-		let dateEnd = event.end.format('yyyy/MM/dd');
+		let dateEnd = event['end'].format('yyyy/MM/dd');
 		$("*[name='com.dcr.DCRListView.date_start']").SFCLabel('option', 'text', dateEnd);
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateEnd);
 		
@@ -358,8 +358,8 @@ class Tasks extends Component {
 				  length={7}
 				  style={{ diplay: 'block' }}
 				  onSelectEvent={this.navigateTo}
-				  onNavigate={this.changeDate}
-				  onRangeChange={this.changeDate}
+				  onNavigate={this.changeDate0}
+				  onRangeChange={this.changeDate1}
 				  culture={this.state.defaultCulture}
 				  components={{
 					event: EventAgenda
