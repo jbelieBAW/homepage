@@ -198,7 +198,7 @@ class Tasks extends Component {
 	*/
     readEvents(eventType, elementsArray) {
 		var $this = this;
-		this.eventsArray = [];
+		var eventsArray = [];
 		elementsArray.each(function() {
 			this.event = new Object;
 			var my_self = this;
@@ -321,14 +321,14 @@ class Tasks extends Component {
 			});
 			
 			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
-				$this.eventsArray.push(this.event);    
+				eventsArray.push(this.event);    
 					
 			}
 		});
 
 	
 		this.setState({
-			events : this.eventsArray
+			events : eventsArray
 		});
     }
 
