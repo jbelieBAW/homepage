@@ -103,6 +103,8 @@ function EventAgenda({event}) {
 
 
 class Tasks extends Component {
+	
+
     constructor(props) {
         super(props);
 		
@@ -318,19 +320,9 @@ class Tasks extends Component {
 					
 			}
 		});
-		/*
-		$this.eventsArray.forEach((item, index) => {
-			console.log(item);
-			$this.setEventsList([...$this.eventsList, item]);		
-		});
-	*/		
 
-	//setEventsList([...$this.eventsList, item]);
 	
-	this.setState({
-			defaultCulture: this.currentCulture, 
-			defaultMessages: this.currentDefaultMessages, 
-			defaultDeleteButtonText: this.currentDeleteButtonText, 
+		this.setState({
 			events : this.eventsArray
 		});
     }
