@@ -319,11 +319,18 @@ class Tasks extends Component {
 					
 			}
 		});
+		/*
 		$this.eventsArray.forEach((item, index) => {
 			console.log(item);
 			$this.setEventsList([...$this.eventsList, item]);		
-		});		
-
+		});
+	*/		
+	var newItem = {
+        start: '2022-07-01',
+        end: '2022-07-01',
+        title: 'title'
+      };
+	setEventsList([...eventsList, newItem]);
     }
 
 	
