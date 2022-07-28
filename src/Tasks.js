@@ -64,7 +64,7 @@ const defaultMessages_en = {
 * HTML Renderer
 */
 function EventAgenda({event}) {
-	const [eventsList, setEventsList] = useState([]);
+	 
 
 
     let cssClass = 'dcc-event-homepage ';
@@ -103,7 +103,6 @@ function EventAgenda({event}) {
 
 
 class Tasks extends Component {
-
     constructor(props) {
         super(props);
 		
@@ -113,6 +112,7 @@ class Tasks extends Component {
             defaultDeleteButtonText: '',
             events: []
         };
+		
 		this.eventsArray = [];
 		this.currentCulture = '';
 		this.currentDefaultMessages = {};
@@ -152,6 +152,7 @@ class Tasks extends Component {
 			this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		}
 		
+		console.log('ven', eventsList);
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		
@@ -165,7 +166,6 @@ class Tasks extends Component {
             }
         });*/
 
-		
 		this.addFormatDateHtml($('*[name=react-control-root-tasks]'));
 		this.addFormatDateHtml($('*[name=react-control-root-pendingtasks]'));
        
@@ -325,12 +325,15 @@ class Tasks extends Component {
 			$this.setEventsList([...$this.eventsList, item]);		
 		});
 	*/		
-	var newItem = {
-        start: '2022-07-01',
-        end: '2022-07-01',
-        title: 'title'
-      };
-	setEventsList([...eventsList, newItem]);
+
+	//setEventsList([...$this.eventsList, item]);
+	
+	this.setState({
+			defaultCulture: currentCulture, 
+			defaultMessages: currentDefaultMessages, 
+			defaultDeleteButtonText: currentDeleteButtonText, 
+			events : eventsArray
+		});
     }
 
 	
