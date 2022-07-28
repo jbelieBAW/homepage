@@ -329,10 +329,10 @@ class Tasks extends Component {
 	//setEventsList([...$this.eventsList, item]);
 	
 	this.setState({
-			defaultCulture: currentCulture, 
-			defaultMessages: currentDefaultMessages, 
-			defaultDeleteButtonText: currentDeleteButtonText, 
-			events : eventsArray
+			defaultCulture: this.currentCulture, 
+			defaultMessages: this.currentDefaultMessages, 
+			defaultDeleteButtonText: this.currentDeleteButtonText, 
+			events : this.eventsArray
 		});
     }
 
