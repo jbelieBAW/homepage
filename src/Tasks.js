@@ -66,7 +66,6 @@ const defaultMessages_en = {
 * HTML Renderer
 */
 function EventAgenda({event}) {
-	const [eventsList, setEventsList] = useState([]);
 
 
     let cssClass = 'dcc-event-homepage ';
