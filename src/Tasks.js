@@ -90,18 +90,11 @@ console.log('event', event);
 		)
     } else if (event.total > 0) {
         cssClass += 'dcc-event-clickable';
-        if (event.waiting == 0) {
-            statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
-        } else {
-            statusTaskIcon =  <i class="bi bi-exclamation-circle" style= {{ color: 'red' }}></i>;
-        }
-		
 		
 		return (
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
 				<span class='dcc-event-title'>DCR - {event.locationEvent}</span>
-				<div class='dcc-event-desc'>{event.waiting} / {event.total}</div>
-				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
+				<div class='dcc-event-total'><span class='dcc-event-total-text'>{event.waiting}</span></div>
 			</div> 
 		)
     } else {
