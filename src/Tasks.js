@@ -316,9 +316,10 @@ class Tasks extends Component {
 			
 		});
 		
-		$this.setState({
-			events : $this.eventsArray
-		});
+		this.state.events =  $this.eventsArray;
+		console.log('rerender', $this.eventsArray);
+		console.log('rerender', this.state.events);
+
     }
 
 	
