@@ -91,10 +91,16 @@ function EventAgenda({event}) {
     } else if (event.total > 0) {
         cssClass += 'dcc-event-clickable';
 		
+		if (event.waiting == 0) {
+			  statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
+        } else {
+            statusTaskIcon =  <i class="bi bi-exclamation-circle" style= {{ color: 'red' }}></i>;
+        }
+		
 		return (
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
 				<span class='dcc-event-title'>DCR - {event.locationEvent}</span>
-				<div class='dcc-event-total'><span class='dcc-event-total-text'>{event.waiting}</span></div>
+				<div class='dcc-event-total'><span class='dcc-event-total-text'>{statusTaskIcon} {event.waiting} / <span class='dcc-event-total-text-counter'>{event.total}</span></span></div>
 			</div> 
 		)
     } else {
@@ -152,10 +158,13 @@ class Tasks extends Component {
 	* Initialization method
 	*/
     componentDidMount() {
+			console.log('lang', $('[name="com.dcr.datalabel.lang"]').html());
         if ($('[name="com.dcr.datalabel.lang"]').html() == 'FR') {
+			console.log('lang0');
 			this.currentCulture = 'fr';
             this.currentDefaultMessages = defaultMessages_fr;
         } else {
+			console.log('lang1');
             this.currentCulture = 'en';
             this.currentDefaultMessages = defaultMessages_en;
         }
@@ -345,7 +354,8 @@ class Tasks extends Component {
 			}
 		});
 
-	
+		console.log('culture', this.currentCulture);
+		console.log('culture', this.currentDefaultMessages);
 		this.setState({
 			defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
@@ -391,7 +401,9 @@ class Tasks extends Component {
         return (
 		
             <div className="dcc-tasks"> 
-				<div className="dcc-tasks-loader"></div>
+				<div className="dcc-tasks-loader">
+					<div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+				</div>
 					<Calendar
 					  defaultDate={this.dateStartCalendar} 
 					  defaultView="agenda"
