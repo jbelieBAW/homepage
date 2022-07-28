@@ -151,22 +151,15 @@ class Tasks extends Component {
             this.currentDefaultMessages = defaultMessages_en;
         }
 
-		if (this.props.status === 'all') {
-			this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		}
+		this.refreshEvents();
 		
-		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		
-		/*
 		this.setState({
             defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
-            events: this.eventsArray,
             agenda: {
                 event: EventAgenda
             }
-        });*/
+        });
 
 		this.addFormatDateHtml($('*[name=react-control-root-tasks]'));
 		this.addFormatDateHtml($('*[name=react-control-root-pendingtasks]'));
@@ -175,7 +168,15 @@ class Tasks extends Component {
 
 	
 	
-
+	refreshEvents() {
+		if (this.props.status === 'all') {
+			this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		}
+		
+		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		
+	}
 
 	/**
 	* Format date html
@@ -322,7 +323,6 @@ class Tasks extends Component {
 			
 			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
 				eventsArray.push(this.event);    
-					
 			}
 		});
 
