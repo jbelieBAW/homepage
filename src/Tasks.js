@@ -64,6 +64,9 @@ const defaultMessages_en = {
 * HTML Renderer
 */
 function EventAgenda({event}) {
+	const [eventsList, setEventsList] = useState([]);
+
+
     let cssClass = 'dcc-event-homepage ';
     let statusTaskIcon = '';
 
@@ -311,15 +314,11 @@ class Tasks extends Component {
 			});
 			
 			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
-				$this.eventsArray.push(this.event);       
+				$this.eventsArray.push(this.event);    
+				setEventsList([...eventsList, this.event]);				
 			}
-			console.log('add - start', this.event.start);
-			console.log('add - end', this.event.start);
-			console.log('add - title', this.event.title);
-			
 		});
-		console.log('this', $this);
-		$this.setEvents($this.eventsArray);
+		
 		
 
     }
