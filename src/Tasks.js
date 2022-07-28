@@ -70,7 +70,7 @@ function EventAgenda({event}) {
 
     let cssClass = 'dcc-event-homepage ';
     let statusTaskIcon = '';
-console.log('event', event);
+	
 	// Task with status (need user action) 
     if (event.statusTask) {
         cssClass += 'dcc-event-clickable';
@@ -350,7 +350,6 @@ class Tasks extends Component {
 
 	
 	onRangeChange(event) {
-		console.log('onrangechagen', event);
 		
 		let dateStart = event['start'].format('yyyy-MM-dd');
 		$("*[name='com.dcr.DCRListView.date_start']").html(dateStart);
@@ -360,7 +359,11 @@ class Tasks extends Component {
 		let dateEnd = new Date(dateStartObject);
 		dateEnd.setDate(dateEnd.getDate() + 7);
 		$("[name='com.dcr.DCRListView.date_end']").html(dateEnd.format('yyyy-MM-dd'));
-		document.getElementsByName("com.dcr.DCRListView.button.refresh")[0].click();
+		if (this.props.status === 'all') {
+			document.getElementsByName("com.dcr.DCRListView.button.refresh.tasks")[0].click();
+		} else {
+			document.getElementsByName("com.dcr.DCRListView.button.refresh.pendingtasks")[0].click();
+		}
 	}
 	
 	/**
