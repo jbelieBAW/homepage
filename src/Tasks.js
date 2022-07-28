@@ -178,7 +178,11 @@ class Tasks extends Component {
             }
 		});
 		
-		document.getElementsByClassName('dcc-tasks-loader')[0].style.display = 'block';
+		if (this.props.status === 'all') {
+			document.getElementsByClassName('dcc-tasks-loader')[0].style.display = 'block';
+		} else {
+			document.getElementsByClassName('dcc-tasks-loader')[1].style.display = 'block';
+		}
 	}
 	
 	refreshEvents() {
@@ -188,7 +192,11 @@ class Tasks extends Component {
 		
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
-		document.getElementsByClassName('dcc-tasks-loader')[0].style.display = 'none';
+		if (this.props.status === 'all') {
+			document.getElementsByClassName('dcc-tasks-loader')[0].style.display = 'none';
+		} else {
+			document.getElementsByClassName('dcc-tasks-loader')[1].style.display = 'none';
+		}
 		
 	}
 
