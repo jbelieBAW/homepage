@@ -155,6 +155,7 @@ class Tasks extends Component {
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		
+		/*
 		this.setState({
             defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
@@ -162,7 +163,7 @@ class Tasks extends Component {
             agenda: {
                 event: EventAgenda
             }
-        });
+        });*/
 
 		
 		this.addFormatDateHtml($('*[name=react-control-root-tasks]'));
