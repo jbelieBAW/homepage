@@ -318,8 +318,8 @@ class Tasks extends Component {
 			console.log('add - title', this.event.title);
 			
 		});
-		
-		setEvents($this.eventsArray);
+		console.log('this', $this);
+		$this.setEvents($this.eventsArray);
 		
 
     }
