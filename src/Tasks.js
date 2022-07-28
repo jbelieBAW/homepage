@@ -175,6 +175,18 @@ class Tasks extends Component {
     }
 
 	
+	startLoadingStatus() {
+		this.setState({
+			defaultCulture: this.currentCulture,
+            defaultMessages: this.currentDefaultMessages,
+            events : [],
+            agenda: {
+                event: EventAgenda
+            }
+		});
+		
+		document.getElementsByClassName('dcc-tasks-loader')[0].style.display = 'block';
+	}
 	
 	refreshEvents() {
 		if (this.props.status === 'all') {
@@ -183,6 +195,7 @@ class Tasks extends Component {
 		
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
+		document.getElementsByClassName('dcc-tasks-loader')[0].style.display = 'none';
 		
 	}
 
