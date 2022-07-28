@@ -321,7 +321,7 @@ class Tasks extends Component {
 		});
 		$this.eventsArray.forEach((item, index) => {
 			console.log(item);
-			setEventsList([...eventsList, item]);		
+			$this.setEventsList([...eventsList, item]);		
 		});		
 
     }
