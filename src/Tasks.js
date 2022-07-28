@@ -373,7 +373,7 @@ class Tasks extends Component {
         return (
 		
             <div className="dcc-tasks"> 
-				<div className="dcc-tasks-loader">
+				<div className="dcc-tasks-loader"></div>
 					<Calendar
 					  defaultDate={this.dateStartCalendar} 
 					  defaultView="agenda"
@@ -395,7 +395,6 @@ class Tasks extends Component {
 						}
 					  })}
 					/>
-				</div>
 			</div>
 		);
     };
