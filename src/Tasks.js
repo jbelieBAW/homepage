@@ -319,10 +319,10 @@ class Tasks extends Component {
 					
 			}
 		});
-		for (i = 0; i < $this.eventsArray.length; i++) {
-			console.log($this.eventsArray[i]);
-			setEventsList([...eventsList, $this.eventsArray[i]]);		
-		}		
+		$this.eventsArray.forEach((item, index) => {
+			console.log(item);
+			setEventsList([...eventsList, item]);		
+		});		
 
     }
 
