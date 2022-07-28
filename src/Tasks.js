@@ -316,11 +316,13 @@ class Tasks extends Component {
 			
 			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
 				$this.eventsArray.push(this.event);    
-				setEventsList([...eventsList, this.event]);				
+					
 			}
 		});
-		
-		
+		for (i = 0; i < $this.eventsArray.length; i++) {
+			console.log($this.eventsArray[i]);
+			setEventsList([...eventsList, $this.eventsArray[i]]);		
+		}		
 
     }
 
