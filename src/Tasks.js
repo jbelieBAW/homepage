@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Calendar,momentLocalizer} from 'react-big-calendar';
+import {Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
 
 import $, { event } from 'jquery';
@@ -60,46 +60,8 @@ const defaultMessages_en = {
     }
 };
 
-/**
-* HTML Renderer
-*/
-function EventAgenda({event}) {
-	 
 
 
-    let cssClass = 'dcc-event-homepage ';
-    let statusTaskIcon = '';
-
-	// Task with status (need user action) 
-    if (event.statusTask) {
-        cssClass += 'dcc-event-clickable';
-        if (event.statusTask == 'closed' || event.statusTask == 'validated') {
-            statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
-        } else {
-            statusTaskIcon =  <i class="bi bi-exclamation-circle" style= {{ color: 'red' }}></i>;
-        }
-		
-		
-		return (
-			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
-				<span class='dcc-event-title'>{event.title}</span>
-				<div class='dcc-event-desc'>{event.desc}</div>
-				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
-			</div> 
-		)
-    } else {
-		// Task without status 
-		return (
-			<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
-				<span class='dcc-event-title'>{event.title}</span>
-				<div class='dcc-event-desc'>{event.desc}</div>
-				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
-			</div> 
-		)
-	}
-
-    
-}
 
 
 class Tasks extends Component {
@@ -173,6 +135,46 @@ class Tasks extends Component {
     }
 
 	
+	
+	/**
+	* HTML Renderer
+	*/
+	makeHTML() {
+		 
+
+
+		let cssClass = 'dcc-event-homepage ';
+		let statusTaskIcon = '';
+
+		// Task with status (need user action) 
+		if (event.statusTask) {
+			cssClass += 'dcc-event-clickable';
+			if (event.statusTask == 'closed' || event.statusTask == 'validated') {
+				statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
+			} else {
+				statusTaskIcon =  <i class="bi bi-exclamation-circle" style= {{ color: 'red' }}></i>;
+			}
+			
+			
+			return (
+				<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
+					<span class='dcc-event-title'>{event.title}</span>
+					<div class='dcc-event-desc'>{event.desc}</div>
+					<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
+				</div> 
+			)
+		} else {
+			// Task without status 
+			return (
+				<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
+					<span class='dcc-event-title'>{event.title}</span>
+					<div class='dcc-event-desc'>{event.desc}</div>
+					<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
+				</div> 
+			)
+		}
+	}
+
 	/**
 	* Format date html
 	*/	
@@ -194,6 +196,7 @@ class Tasks extends Component {
 	*/
     readEvents(eventType, elementsArray) {
 		var $this = this;
+		this.eventsArray = [];
 		elementsArray.each(function() {
 			this.event = new Object;
 			var my_self = this;
@@ -370,7 +373,7 @@ class Tasks extends Component {
 				  onRangeChange={this.onRangeChange}
 				  culture={this.state.defaultCulture}
 				  components={{
-					event: EventAgenda
+					event: makeHTML
 				  }}
 				  eventPropGetter={event => ({
 					style: {
