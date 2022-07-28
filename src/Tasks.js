@@ -88,6 +88,22 @@ function EventAgenda({event}) {
 				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
 			</div> 
 		)
+    } else if (event.statusTask) {
+        cssClass += 'dcc-event-clickable';
+        if (event.waiting == 0) {
+            statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
+        } else {
+            statusTaskIcon =  <i class="bi bi-exclamation-circle" style= {{ color: 'red' }}></i>;
+        }
+		
+		
+		return (
+			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
+				<span class='dcc-event-title'>DCR - {event.location}</span>
+				<div class='dcc-event-desc'>{event.waiting} / {event.total}</div>
+				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
+			</div> 
+		)
     } else {
 		// Task without status 
 		return (
@@ -151,15 +167,7 @@ class Tasks extends Component {
             this.currentDefaultMessages = defaultMessages_en;
         }
 
-		this.refreshEvents();
-		
-		this.setState({
-            defaultCulture: this.currentCulture,
-            defaultMessages: this.currentDefaultMessages,
-            agenda: {
-                event: EventAgenda
-            }
-        });
+		this.refreshEvents();	
 
 		this.addFormatDateHtml($('*[name=react-control-root-tasks]'));
 		this.addFormatDateHtml($('*[name=react-control-root-pendingtasks]'));
@@ -328,7 +336,12 @@ class Tasks extends Component {
 
 	
 		this.setState({
-			events : eventsArray
+			defaultCulture: this.currentCulture,
+            defaultMessages: this.currentDefaultMessages,
+            events : eventsArray,
+            agenda: {
+                event: EventAgenda
+            }
 		});
     }
 
