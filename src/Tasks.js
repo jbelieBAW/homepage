@@ -152,7 +152,6 @@ class Tasks extends Component {
 			this.readEvents('tasks',  $('div[name="homepageTasksList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		}
 		
-		console.log('ven', eventsList);
 		this.readEvents('sir',  $('div[name="SIRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		this.readEvents('dcr',  $('div[name="DCRList"] .grid-body .grid-body-content tr').not('.empty-grid'));
 		
