@@ -99,7 +99,7 @@ console.log('event', event);
 		
 		return (
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
-				<span class='dcc-event-title'>DCR - {event.location}</span>
+				<span class='dcc-event-title'>DCR - {event.locationEvent}</span>
 				<div class='dcc-event-desc'>{event.waiting} / {event.total}</div>
 				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
 			</div> 
@@ -306,10 +306,7 @@ class Tasks extends Component {
 						//Localisation
 						case 6:
 							my_self.event.desc	 = $(this).data("options").value;
-							break;
-						//Localisation
-						case 6:
-							my_self.event.desc	 = $(this).data("options").value;
+							my_self.event.locationEvent = $(this).data("options").value;
 							break;
 						//type
 						case 7:
@@ -374,28 +371,31 @@ class Tasks extends Component {
 		
 		
         return (
+		
             <div className="dcc-tasks"> 
-				<Calendar
-				  defaultDate={this.dateStartCalendar} 
-				  defaultView="agenda"
-				  formats={this.dateFormats}
-				  events={this.state.events}
-				  localizer={this.localizer}
-				  messages={this.state.defaultMessages}
-				  length={7}
-				  style={{ diplay: 'block' }}
-				  onSelectEvent={this.navigateTo}
-				  onRangeChange={this.onRangeChange}
-				  culture={this.state.defaultCulture}
-				  components={{
-					event: EventAgenda
-				  }}
-				  eventPropGetter={event => ({
-					style: {
-					  border: '0px',
-					}
-				  })}
-				/>
+				<div className="dcc-tasks-loader">
+					<Calendar
+					  defaultDate={this.dateStartCalendar} 
+					  defaultView="agenda"
+					  formats={this.dateFormats}
+					  events={this.state.events}
+					  localizer={this.localizer}
+					  messages={this.state.defaultMessages}
+					  length={7}
+					  style={{ diplay: 'block' }}
+					  onSelectEvent={this.navigateTo}
+					  onRangeChange={this.onRangeChange}
+					  culture={this.state.defaultCulture}
+					  components={{
+						event: EventAgenda
+					  }}
+					  eventPropGetter={event => ({
+						style: {
+						  border: '0px',
+						}
+					  })}
+					/>
+				</div>
 			</div>
 		);
     };
