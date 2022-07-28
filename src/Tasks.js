@@ -70,7 +70,7 @@ function EventAgenda({event}) {
 
     let cssClass = 'dcc-event-homepage ';
     let statusTaskIcon = '';
-
+console.log('event', event);
 	// Task with status (need user action) 
     if (event.statusTask) {
         cssClass += 'dcc-event-clickable';
@@ -88,7 +88,7 @@ function EventAgenda({event}) {
 				<div class='dcc-event-statusTask' style = {{ color : '#444' }} >{statusTaskIcon}</div>
 			</div> 
 		)
-    } else if (event.statusTask) {
+    } else if (event.total > 0) {
         cssClass += 'dcc-event-clickable';
         if (event.waiting == 0) {
             statusTaskIcon =  <i class="bi bi-check2-circle" style= {{ color: 'green' }}></i>;
