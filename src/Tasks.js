@@ -402,7 +402,7 @@ class Tasks extends Component {
 		
             <div className="dcc-tasks"> 
 				<div className="dcc-tasks-loader">
-					<div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+					<div className="dcc-spinner"></div>
 				</div>
 					<Calendar
 					  defaultDate={this.dateStartCalendar} 
