@@ -99,7 +99,7 @@ function EventAgenda({event}) {
 		
 		return (
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
-				<span class='dcc-event-title'>{event.locationTask} - {event.locationEvent}</span>
+				<span class='dcc-event-title'>{event.type} - {event.locationEvent}</span>
 				<div class='dcc-event-total'><span class='dcc-event-total-text'>{statusTaskIcon} {event.waiting} / {event.total}</span></div>
 			</div> 
 		)
@@ -107,7 +107,7 @@ function EventAgenda({event}) {
 		// Task without status 
 		return (
 			<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
-				<span class='dcc-event-title'><span class = {event.title}> </span></span>
+				<span class='dcc-event-title'><span name = {event.title}> </span></span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
 			</div> 
