@@ -99,15 +99,15 @@ function EventAgenda({event}) {
 		
 		return (
 			<div class = {cssClass} style =  {{ borderLeft: '8px solid ' + event.color, backgroundColor : '#DDD', paddingRight: '28px' }} >
-				<span class='dcc-event-title'>DCR - {event.locationEvent}</span>
-				<div class='dcc-event-total'><span class='dcc-event-total-text'>{statusTaskIcon} {event.waiting} / <span class='dcc-event-total-text-counter'>{event.total}</span></span></div>
+				<span class='dcc-event-title'>{event.locationTask} - {event.locationEvent}</span>
+				<div class='dcc-event-total'><span class='dcc-event-total-text'>{statusTaskIcon} {event.waiting} / {event.total}</span></div>
 			</div> 
 		)
     } else {
 		// Task without status 
 		return (
 			<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
-				<span class='dcc-event-title'>{event.title}</span>
+				<span class='dcc-event-title'><span class = {event.title}> </span></span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
 			</div> 
@@ -334,15 +334,19 @@ class Tasks extends Component {
 							break;
 						//type
 						case 7:
-							my_self.event.type	 = $(this).data("options").value;
+							my_self.event.locationTask	 = $(this).data("options").value;
 							break;
-						//Localisation
+						//Waiting
 						case 8:
 							my_self.event.waiting	 = $(this).data("options").value;
 							break;
-						//Localisation
+						//Total
 						case 9:
 							my_self.event.total	 = $(this).data("options").value;
+							break;
+						//Type
+						case 10:
+							my_self.event.type	 = $(this).data("options").value;
 							break;
 						default:
 						console.log("Unbound value");
@@ -350,7 +354,7 @@ class Tasks extends Component {
 				}
 			});
 			
-			if ($this.props.status === 'all' || ($this.props.status === 'pending' && ((my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) || my_self.event.wainting > 0) ) {
+			if ($this.props.status === 'all' || ($this.props.status === 'pending' && ((my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed') || my_self.event.wainting > 0) )) {
 				$this.eventsArray.push(this.event);    
 			}
 			
