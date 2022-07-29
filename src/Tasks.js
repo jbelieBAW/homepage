@@ -178,6 +178,7 @@ class Tasks extends Component {
 
 	
 	startLoadingStatus() {
+		this.eventsArray = [];
 		this.setState({
 			defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
@@ -230,7 +231,7 @@ class Tasks extends Component {
 	*/
     readEvents(eventType, elementsArray) {
 		var $this = this;
-		var eventsArray = [];
+		
 		elementsArray.each(function() {
 			this.event = new Object;
 			var my_self = this;
@@ -349,9 +350,11 @@ class Tasks extends Component {
 				}
 			});
 			
-			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
-				eventsArray.push(this.event);    
+			if ($this.props.status === 'all' || ($this.props.status === 'pending' && ((my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) || my_self.event.wainting > 0) ) {
+				$this.eventsArray.push(this.event);    
 			}
+			
+			console.log('event', this.event);
 		});
 
 		console.log('culture', this.currentCulture);
@@ -359,7 +362,7 @@ class Tasks extends Component {
 		this.setState({
 			defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
-            events : eventsArray,
+            events : $this.eventsArray,
             agenda: {
                 event: EventAgenda
             }
