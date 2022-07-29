@@ -89,6 +89,7 @@
 
 .dcc-tasks {
 	position: relative;
+	padding-bottom: 15px;
 }
 
 .dcc-tasks .dcc-tasks-loader{
@@ -129,6 +130,7 @@
    animation: spinner-b87k6z 1s infinite linear;
    left: 50%;
    top: 30px;
+   position: absolute;
 }
 
 @keyframes spinner-b87k6z {

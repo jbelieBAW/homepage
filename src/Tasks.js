@@ -379,9 +379,9 @@ class Tasks extends Component {
 		$("[name='com.dcr.DCRListView.date_end']").html(dateEnd.format('yyyy-MM-dd'));
 		
 		if (this.props.status === 'all') {
-			document.getElementsByName("com.dcr.DCRListView.button.refresh.tasks")[0].click();
+			document.getElementsByName("com.dcr.HomepageForm.button.refresh.tasks")[0].click();
 		} else {
-			document.getElementsByName("com.dcr.DCRListView.button.refresh.pendingtasks")[0].click();
+			document.getElementsByName("com.dcr.HomepageForm.button.refresh.taskspending")[0].click();
 		}
 	}
 	
