@@ -107,7 +107,7 @@ function EventAgenda({event}) {
 		// Task without status 
 		return (
 			<div class = {cssClass} style = {{ backgroundColor: event.bgcolor, borderLeft: '8px solid ' + event.color }}  >
-				<span class='dcc-event-title'><span title = {event.title}> </span></span>
+				<span class='dcc-event-title'>{event.title}</span>
 				<div class='dcc-event-desc'>{event.desc}</div>
 				<div class='dcc-event-statusTask'>{statusTaskIcon}</div>
 			</div> 
