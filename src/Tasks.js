@@ -351,6 +351,12 @@ class Tasks extends Component {
 				}
 			});
 			
+			console.log('status', $this.props.status);
+			console.log('status', $this.props.status === 'pending');
+			console.log('event', this.event);
+			console.log('event', my_self.event.statusTask);
+			console.log('event', my_self.event.statusTask != 'validated');
+			
 			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
 				$this.eventsArray.push(this.event);    
 			}
