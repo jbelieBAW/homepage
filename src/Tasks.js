@@ -158,13 +158,10 @@ class Tasks extends Component {
 	* Initialization method
 	*/
     componentDidMount() {
-			console.log('lang', $('[name="com.dcr.datalabel.lang"]').html());
         if ($('[name="com.dcr.datalabel.lang"]').html() == 'FR') {
-			console.log('lang0');
 			this.currentCulture = 'fr';
             this.currentDefaultMessages = defaultMessages_fr;
         } else {
-			console.log('lang1');
             this.currentCulture = 'en';
             this.currentDefaultMessages = defaultMessages_en;
         }
@@ -354,15 +351,12 @@ class Tasks extends Component {
 				}
 			});
 			
-			if ($this.props.status === 'all' || ($this.props.status === 'pending' && ((my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed') || my_self.event.wainting > 0) )) {
+			if ($this.props.status === 'all' || ($this.props.status === 'pending' && ((my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed') || my_self.event.wainting != "0") )) {
 				$this.eventsArray.push(this.event);    
 			}
 			
-			console.log('event', this.event);
 		});
 
-		console.log('culture', this.currentCulture);
-		console.log('culture', this.currentDefaultMessages);
 		this.setState({
 			defaultCulture: this.currentCulture,
             defaultMessages: this.currentDefaultMessages,
