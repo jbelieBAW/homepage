@@ -351,7 +351,7 @@ class Tasks extends Component {
 				}
 			});
 			
-			if ($this.props.status === 'all' || ($this.props.status === 'pending' && ((my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed') || my_self.event.wainting != "0") )) {
+			if ($this.props.status === 'all' || ($this.props.status === 'pending' && (my_self.event.statusTask != 'validated' && my_self.event.statusTask != 'closed')) ) {
 				$this.eventsArray.push(this.event);    
 			}
 			
